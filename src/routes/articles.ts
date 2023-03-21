@@ -1,7 +1,6 @@
 import Express from "express";
 import { errorHandlingMiddleware } from "../middlewares";
 import { getArticleById, insertArticle } from "../services/article";
-import { Article } from "../types";
 import { isObjectArticle } from "../validators";
 
 const router = Express.Router();
@@ -30,8 +29,7 @@ router.get(
       const articleId = req.params.articleId;
       const article = await getArticleById(articleId);
       res.send({
-        article,
-        success: true,
+        ...article,
       });
     }
   )

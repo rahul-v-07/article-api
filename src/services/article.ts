@@ -5,7 +5,7 @@ import { Article } from "../types";
 async function insertArticle(article: Article) {
   const allArticles = await getArticles();
   if (article.id in allArticles) {
-    throw { message: "Article with passed ID already exists", code: 500 };
+    throw { message: "Article with passed ID already exists", code: 400 };
   }
   return Promise.all([
     insertArticleDao(article),
@@ -17,7 +17,7 @@ async function getArticleById(id: string) {
   const allArticles = await getArticles();
   const article = allArticles[id];
   if (!article) {
-    throw { message: "Unable to find the article by supplied ID", code: 400 };
+    throw { message: "Unable to find the article by supplied ID", code: 404 };
   }
   return article;
 }

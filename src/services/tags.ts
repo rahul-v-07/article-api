@@ -33,7 +33,7 @@ async function getTagInfoFilteredByDate(
 ): Promise<TagInfo> {
   const tagsToArticleMapping = await getTagsToArticlesMapping();
   if (!(tagName in tagsToArticleMapping)) {
-    throw { message: "Tag name does not exist", code: 400 };
+    throw { message: "Tag name does not exist", code: 404 };
   }
   const allRelatedArticles = tagsToArticleMapping[tagName];
   const { articles, tags } = await getArticlesAndRelatedTagsForTheDate(
