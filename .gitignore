@@ -1,4 +1,5 @@
-/database
+/*/articles.json
+/*/tags_mapping.json
 /node_modules
 
 yarn-error.log
